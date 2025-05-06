@@ -16,6 +16,7 @@ class Command(BaseCommand):
             defaults = {
                 'name': data.get('name'),
                 'category': data.get('type'),
+                'details': data.get('details', {}),
             }
 
             skin, _ = Skin.objects.update_or_create(

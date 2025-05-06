@@ -6,9 +6,13 @@ from django.core.management.base import BaseCommand
 class Command(BaseCommand):
 
     def handle(self, *args, **options):
+
+        def valid_skin(data):
+            return bool(data.get('id')) and bool(data.get('name'))
+
         api_client = GW2APIClient()
 
-        for data in api_client.iter_skins():
+        for data in filter(valid_skin, api_client.iter_skins()):
             defaults = {
                 'name': data.get('name'),
                 'category': data.get('type'),

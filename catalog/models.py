@@ -1,8 +1,22 @@
 from django.db import models
 
 
+class Collection(models.Model):
+    name = models.CharField(max_length=255)
+    note = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
+
+
 class Skin(models.Model):
     api_id = models.PositiveIntegerField(primary_key=True)
+    collection = models.ForeignKey(
+        Collection,
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name='skins',
+    )
     name = models.CharField(max_length=255)
     category = models.CharField(max_length=20)
     details = models.JSONField(default=dict)

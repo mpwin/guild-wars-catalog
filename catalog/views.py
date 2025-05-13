@@ -6,4 +6,4 @@ def skin_list(request):
     context = {
         'skins': Skin.objects.all(),
     }
-    return render(request, 'skins/skin_list.html', context)
+    return render(request, 'catalog/skin_list.html', context)

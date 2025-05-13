@@ -1,0 +1,21 @@
+- name: Bladed
+  note: Heart of Thorns ~ Verdant Brink
+  skin_ids:
+    - 6338 # Heavy  | Helm
+    - 6428 # Heavy  | Shoulders
+    - 6244 # Heavy  | Chest
+    - 6271 # Heavy  | Gloves
+    - 6262 # Heavy  | Leggings
+    - 6336 # Heavy  | Boots
+    - 6275 # Medium | Helm
+    - 6345 # Medium | Shoulders
+    - 6381 # Medium | Chest
+    - 6166 # Medium | Gloves
+    - 6229 # Medium | Leggings
+    - 6205 # Medium | Boots
+    - 6247 # Light  | Helm
+    - 6377 # Light  | Shoulders
+    - 6254 # Light  | Chest
+    - 6476 # Light  | Gloves
+    - 6378 # Light  | Leggings
+    - 6387 # Light  | Boots

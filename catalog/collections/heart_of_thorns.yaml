@@ -1,3 +1,24 @@
+- name: Auric
+  category: Weapon
+  note: Heart of Thorns ~ Auric Basin
+  skin_ids:
+    - 6153 # Axe
+    - 6172 # Longbow
+    - 6366 # Short Bow
+    - 6322 # Dagger
+    - 6461 # Focus
+    - 6413 # Greatsword
+    - 6156 # Hammer
+    - 6508 # Mace
+    - 6391 # Pistol
+    - 6208 # Rifle
+    - 6497 # Scepter
+    - 6415 # Shield
+    - 6318 # Staff
+    - 6167 # Sword
+    - 6258 # Torch
+    - 6502 # Warhorn
+
 - name: Bladed
   category: Armor
   note: Heart of Thorns ~ Verdant Brink

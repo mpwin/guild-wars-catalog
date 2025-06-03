@@ -1,3 +1,6 @@
+{% extends "catalog/base.html" %}
+
+{% block content %}
 <table>
   <tbody>
     {% for collection in collections %}
@@ -7,3 +10,4 @@
     {% endfor %}
   </tbody>
 </table>
+{% endblock %}

@@ -1,4 +1,5 @@
 - name: Bladed
+  category: Armor
   note: Heart of Thorns ~ Verdant Brink
   skin_ids:
     - 6338 # Heavy  | Helm

@@ -20,6 +20,7 @@ class Command(BaseCommand):
 
             for data in collections_data:
                 defaults = {
+                    'category': data.get('category'),
                     'note': data.get('note'),
                 }
 

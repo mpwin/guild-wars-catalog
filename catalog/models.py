@@ -3,6 +3,7 @@ from django.db import models
 
 class Collection(models.Model):
     name = models.CharField(max_length=255)
+    category = models.CharField(max_length=20)
     note = models.CharField(max_length=255)
 
     def __str__(self):

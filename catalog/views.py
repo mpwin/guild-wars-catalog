@@ -14,7 +14,21 @@ def collection_list(request):
 
 
 def skin_list(request):
+    weapon = Skin.objects.filter(
+        category='Weapon',
+        collection__isnull=True,
+    ).order_by('name')
+    armor = Skin.objects.filter(
+        category='Armor',
+        collection__isnull=True,
+    ).order_by('name')
+    back = Skin.objects.filter(category='Back').order_by('name')
+    gathering = Skin.objects.filter(category='Gathering').order_by('name')
+
     context = {
-        'skins': Skin.objects.all(),
+        'weapon_skins': weapon,
+        'armor_skins': armor,
+        'back_skins': back,
+        'gathering_skins': gathering,
     }
     return render(request, 'catalog/skin_list.html', context)

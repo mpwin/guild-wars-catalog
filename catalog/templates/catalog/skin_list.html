@@ -1,13 +1,38 @@
 {% extends "catalog/base.html" %}
 
 {% block content %}
-    <table>
-        <tbody>
-            {% for skin in skins %}
-                <tr>
-                    <td>{{ skin.name }}</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <div id="skins">
+        <div class="column">
+            <h2>Weapon</h2>
+            <ul>
+                {% for skin in weapon_skins %}
+                    <li>{{ skin.name }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="column">
+            <h2>Armor</h2>
+            <ul>
+                {% for skin in armor_skins %}
+                    <li>{{ skin.name }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="column">
+            <h2>Back</h2>
+            <ul>
+                {% for skin in back_skins %}
+                    <li>{{ skin.name }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="column">
+            <h2>Gathering</h2>
+            <ul>
+                {% for skin in gathering_skins %}
+                    <li>{{ skin.name }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
 {% endblock content %}

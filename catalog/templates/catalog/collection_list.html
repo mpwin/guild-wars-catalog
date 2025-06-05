@@ -1,25 +1,29 @@
 {% extends "catalog/base.html" %}
 
 {% block content %}
-    <div class="collections">
-        <div></div>
-        <div>
-            <table>
-                <tbody>
-                    {% for collection in weapon_collections %}
-                        <tr><td>{{ collection.name }}</td></tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+    <div id="collections">
+        <div class="column"></div>
+        <div class="column">
+            <h2>Weapon</h2>
+            <ul>
+                {% for collection in weapon_collections %}
+                    <li>
+                        <div class="name">{{ collection.name }}</div>
+                        <div class="note">{{ collection.note }}</div>
+                    </li>
+                {% endfor %}
+            </ul>
         </div>
-        <div>
-            <table>
-                <tbody>
-                    {% for collection in armor_collections %}
-                        <tr><td>{{ collection.name }}</td></tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+        <div class="column">
+            <h2>Armor</h2>
+            <ul>
+                {% for collection in armor_collections %}
+                    <li>
+                        <div class="name">{{ collection.name }}</div>
+                        <div class="note">{{ collection.note }}</div>
+                    </li>
+                {% endfor %}
+            </ul>
         </div>
     </div>
 {% endblock content %}

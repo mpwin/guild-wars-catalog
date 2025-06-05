@@ -1,4 +1,41 @@
-.collections {
+body {
+    background-color: #32302f;
+    color: #fbf1c7;
+    font-family: Consolas;
+    font-size: 24px;
+}
+
+h2 {
+    background-color: #458588;
+    border: 1px solid #a89984;
+    font-size: 24px;
+    font-weight: normal;
+    margin: 0;
+    padding: 4px 10px;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+        border-color: #a89984;
+        border-style: solid;
+        border-width: 0 1px 1px 1px;
+        padding: 4px 10px;
+
+        .note {
+            color: #a89984;
+        }
+    }
+}
+
+.column {
+    padding: 1rem;
+}
+
+#collections {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
 }

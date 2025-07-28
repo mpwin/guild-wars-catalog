@@ -1,3 +1,4 @@
+import os
 import requests
 import time
 from collections.abc import Iterator
@@ -6,6 +7,7 @@ from collections.abc import Iterator
 class GW2APIClient:
 
     def __init__(self):
+        self.api_key = os.getenv('GW2_API_KEY')
         self.base_url = "https://api.guildwars2.com/v2/"
         self.session = requests.Session()
 
@@ -27,3 +29,11 @@ class GW2APIClient:
                 yield skin
 
             time.sleep(2)
+
+    def iter_unlocked_skin_ids(self) -> Iterator[int]:
+        response = self.session.get(
+            self.base_url + "account/skins",
+            headers={'Authorization': f'Bearer {self.api_key}'},
+        )
+        response.raise_for_status()
+        return iter(response.json())

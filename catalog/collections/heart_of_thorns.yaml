@@ -41,3 +41,24 @@
     - 6476 # Light  | Gloves
     - 6378 # Light  | Leggings
     - 6387 # Light  | Boots
+
+- name: Chak
+  category: Weapon
+  note: Heart of Thorns ~ Tangled Depths
+  skin_ids:
+    - 6407 # Axe
+    - 6221 # Dagger
+    - 6209 # Focus
+    - 6191 # Greatsword
+    - 6181 # Hammer
+    - 6340 # Longbow
+    - 6435 # Mace
+    - 6430 # Pistol
+    - 6272 # Rifle
+    - 6437 # Scepter
+    - 6342 # Shield
+    - 6150 # Short Bow
+    - 6290 # Staff
+    - 6207 # Sword
+    - 6212 # Torch
+    - 6201 # Warhorn

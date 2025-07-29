@@ -21,6 +21,7 @@ class Skin(models.Model):
     name = models.CharField(max_length=255)
     category = models.CharField(max_length=20)
     details = models.JSONField(default=dict)
+    is_unlocked = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name

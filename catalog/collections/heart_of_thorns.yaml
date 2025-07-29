@@ -62,3 +62,24 @@
     - 6207 # Sword
     - 6212 # Torch
     - 6201 # Warhorn
+
+- name: Reclaimed
+  category: Weapon
+  note: Heart of Thorns
+  skin_ids:
+    - 5896 # Axe
+    - 5897 # Dagger
+    - 5940 # Focus
+    - 5941 # Greatsword
+    - 5917 # Hammer
+    - 5928 # Longbow
+    - 5892 # Mace
+    - 5908 # Pistol
+    - 5949 # Rifle
+    - 5938 # Scepter
+    - 5944 # Shield
+    - 5925 # Short Bow
+    - 5950 # Staff
+    - 5922 # Sword
+    - 5946 # Torch
+    - 5893 # Warhorn

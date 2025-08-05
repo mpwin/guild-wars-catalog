@@ -18,6 +18,26 @@ class Release(models.Model):
         return self.name
 
 
+class Map(models.Model):
+    name = models.CharField(
+        max_length=40,
+        unique=True,
+    )
+    slug = models.SlugField(
+        max_length=40,
+        unique=True,
+    )
+    release = models.ForeignKey(
+        Release,
+        on_delete=models.PROTECT,
+        related_name='maps',
+    )
+    order = models.PositiveSmallIntegerField()
+
+    def __str__(self):
+        return self.name
+
+
 class Collection(models.Model):
     name = models.CharField(max_length=255)
     category = models.CharField(max_length=20)

@@ -71,7 +71,7 @@ class Skin(models.Model):
     )
     collection = models.ForeignKey(
         Collection,
-        on_delete=models.SET_NULL,
+        on_delete=models.PROTECT,
         null=True,
         related_name='skins',
     )

@@ -48,6 +48,18 @@ class Collection(models.Model):
     note = models.CharField(
         max_length=255,
     )
+    release = models.ForeignKey(
+        Release,
+        on_delete=models.PROTECT,
+        null=True,
+        related_name='collections',
+    )
+    zone = models.ForeignKey(
+        Zone,
+        on_delete=models.PROTECT,
+        null=True,
+        related_name='collections',
+    )
 
     def __str__(self):
         return self.name

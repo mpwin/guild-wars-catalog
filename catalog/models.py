@@ -18,7 +18,7 @@ class Release(models.Model):
         return self.name
 
 
-class Map(models.Model):
+class Zone(models.Model):
     name = models.CharField(
         max_length=40,
         unique=True,
@@ -30,7 +30,7 @@ class Map(models.Model):
     release = models.ForeignKey(
         Release,
         on_delete=models.PROTECT,
-        related_name='maps',
+        related_name='zones',
     )
     order = models.PositiveSmallIntegerField()
 

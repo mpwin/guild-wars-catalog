@@ -1,7 +1,12 @@
 services:
+  db:
+    image: postgres:17
+    env_file: .env
+
   web:
     image: guild-wars-catalog:latest
     build: .
+    env_file: .env
     ports:
       - '8000:8000'
     volumes:

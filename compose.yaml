@@ -2,6 +2,8 @@ services:
   db:
     image: postgres:17
     env_file: .env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
 
   web:
     image: guild-wars-catalog:latest
@@ -11,3 +13,6 @@ services:
       - '8000:8000'
     volumes:
       - '.:/app'
+
+volumes:
+  postgres_data:

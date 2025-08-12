@@ -4,11 +4,18 @@ services:
     env_file: .env
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: "pg_isready -d ${POSTGRES_DB}"
+      interval: 5s
+      timeout: 5s
 
   web:
     image: guild-wars-catalog:latest
     build: .
     env_file: .env
+    depends_on:
+      db:
+        condition: service_healthy
     ports:
       - '8000:8000'
     volumes:

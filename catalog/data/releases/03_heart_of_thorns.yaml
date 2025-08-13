@@ -1,0 +1,21 @@
+release:
+  name: Heart of Thorns
+  slug: heart-of-thorns
+  order: 3
+
+zones:
+  - name: Verdant Brink
+    slug: verdant-brink
+    order: 1
+
+  - name: Auric Basin
+    slug: auric-basin
+    order: 2
+
+  - name: Tangled Depths
+    slug: tangled-depths
+    order: 3
+
+  - name: Dragon's Stand
+    slug: dragons-stand
+    order: 4

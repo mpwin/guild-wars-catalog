@@ -1,6 +1,6 @@
 import os
 import yaml
-from catalog.models import Release, Zone
+from catalog.models import Collection, Release, Skin, Zone
 from django.conf import settings
 from django.core.management.base import BaseCommand
 
@@ -27,6 +27,7 @@ class Command(BaseCommand):
             )
             self.stdout.write(f"Release : {release.name}")
 
+            zones: dict = {}
             for zone_data in data['zones']:
                 zone, _ = Zone.objects.get_or_create(
                     slug=zone_data['slug'],
@@ -36,4 +37,23 @@ class Command(BaseCommand):
                         'order': zone_data['order'],
                     }
                 )
+                zones[zone.slug] = zone
                 self.stdout.write(f"Zone : {zone.name}")
+
+            for collection_data in data['collections']:
+                collection, _ = Collection.objects.update_or_create(
+                    name=collection_data['name'],
+                    defaults={
+                      'category': collection_data['category'],
+                      'note': collection_data['note'],
+                      'release': release,
+                      'zone': zones.get(collection_data.get('zone')),
+                    },
+                )
+                self.stdout.write(f"Collection : {collection.name}")
+
+                for skin_id in collection_data['skin_ids']:
+                    skin = Skin.objects.get(api_id=skin_id)
+                    if skin.collection_id != collection.id:
+                        skin.collection = collection
+                        skin.save(update_fields=['collection'])

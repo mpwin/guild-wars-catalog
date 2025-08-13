@@ -19,3 +19,93 @@ zones:
   - name: Dragon's Stand
     slug: dragons-stand
     order: 4
+
+collections:
+  - name: Auric
+    category: Weapon
+    note: Heart of Thorns ~ Auric Basin
+    zone: auric-basin
+    skin_ids:
+      - 6153 # Axe
+      - 6322 # Dagger
+      - 6461 # Focus
+      - 6413 # Greatsword
+      - 6156 # Hammer
+      - 6172 # Longbow
+      - 6508 # Mace
+      - 6391 # Pistol
+      - 6208 # Rifle
+      - 6497 # Scepter
+      - 6415 # Shield
+      - 6366 # Short Bow
+      - 6318 # Staff
+      - 6167 # Sword
+      - 6258 # Torch
+      - 6502 # Warhorn
+
+  - name: Bladed
+    category: Armor
+    note: Heart of Thorns ~ Verdant Brink
+    zone: verdant-brink
+    skin_ids:
+      - 6338 # Heavy  | Helm
+      - 6428 # Heavy  | Shoulders
+      - 6244 # Heavy  | Chest
+      - 6271 # Heavy  | Gloves
+      - 6262 # Heavy  | Leggings
+      - 6336 # Heavy  | Boots
+      - 6275 # Medium | Helm
+      - 6345 # Medium | Shoulders
+      - 6381 # Medium | Chest
+      - 6166 # Medium | Gloves
+      - 6229 # Medium | Leggings
+      - 6205 # Medium | Boots
+      - 6247 # Light  | Helm
+      - 6377 # Light  | Shoulders
+      - 6254 # Light  | Chest
+      - 6476 # Light  | Gloves
+      - 6378 # Light  | Leggings
+      - 6387 # Light  | Boots
+
+  - name: Chak
+    category: Weapon
+    note: Heart of Thorns ~ Tangled Depths
+    zone: tangled-depths
+    skin_ids:
+      - 6407 # Axe
+      - 6221 # Dagger
+      - 6209 # Focus
+      - 6191 # Greatsword
+      - 6181 # Hammer
+      - 6340 # Longbow
+      - 6435 # Mace
+      - 6430 # Pistol
+      - 6272 # Rifle
+      - 6437 # Scepter
+      - 6342 # Shield
+      - 6150 # Short Bow
+      - 6290 # Staff
+      - 6207 # Sword
+      - 6212 # Torch
+      - 6201 # Warhorn
+
+  - name: Reclaimed
+    category: Weapon
+    note: Heart of Thorns
+    skin_ids:
+      - 5896 # Axe
+      - 5897 # Dagger
+      - 5940 # Focus
+      - 5941 # Greatsword
+      - 5917 # Hammer
+      - 5928 # Longbow
+      - 5892 # Mace
+      - 5908 # Pistol
+      - 5949 # Rifle
+      - 5938 # Scepter
+      - 5944 # Shield
+      - 5925 # Short Bow
+      - 5950 # Staff
+      - 5922 # Sword
+      - 5946 # Torch
+      - 5893 # Warhorn

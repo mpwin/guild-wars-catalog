@@ -10,6 +10,8 @@ services:
       test: "pg_isready -d ${POSTGRES_DB}"
       interval: 5s
       timeout: 5s
+    networks:
+      - gwc-network
 
   web:
     image: guild-wars-catalog:latest
@@ -22,6 +24,12 @@ services:
       - '8000:8000'
     volumes:
       - '.:/app'
+    networks:
+      - gwc-network
 
 volumes:
   postgres_data:
+
+networks:
+  gwc-network:
+    external: true

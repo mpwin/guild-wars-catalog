@@ -32,7 +32,9 @@ SECRET_KEY = 'django-insecure-m=7+jf@kbjd)dkv%6@#r3ae5fks$4m0edxb@$@2_7ru3%dw0d2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'gwc-backend-web',
+]
 
 
 # Application definition

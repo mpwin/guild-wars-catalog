@@ -1,8 +1,9 @@
-name: guild-wars-catalog
+name: gwc-backend
 
 services:
   db:
     image: postgres:17
+    container_name: gwc-backend-db
     env_file: .env
     volumes:
       - postgres_data:/var/lib/postgresql/data
@@ -14,7 +15,8 @@ services:
       - gwc-network
 
   web:
-    image: guild-wars-catalog:latest
+    image: gwc-backend:dev
+    container_name: gwc-backend-web
     build: .
     env_file: .env
     depends_on:

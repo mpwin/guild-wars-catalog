@@ -11,6 +11,25 @@ class GW2APIClient:
         self.base_url = "https://api.guildwars2.com/v2/"
         self.session = requests.Session()
 
+    def iter_achievements(self) -> Iterator[dict]:
+        response = self.session.get(
+            self.base_url + "achievements",
+            params={'page': 0, 'page_size': 200},
+        )
+        page_total = int(response.headers.get('X-Page-Total', 1))
+
+        for page in range(page_total):
+            response = self.session.get(
+                self.base_url + "achievements",
+                params={'page': page, 'page_size': 200},
+            )
+            achievements = response.json()
+
+            for achievement in achievements:
+                yield achievement
+
+            time.sleep(2)
+
     def iter_skins(self) -> Iterator[dict]:
         response = self.session.get(
             self.base_url + "skins",

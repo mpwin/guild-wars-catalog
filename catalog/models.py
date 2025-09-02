@@ -38,6 +38,34 @@ class Zone(models.Model):
         return self.name
 
 
+class Achievement(models.Model):
+    api_id = models.PositiveIntegerField(
+        primary_key=True,
+    )
+    name = models.CharField(
+        max_length=255,
+    )
+    description = models.TextField()
+    is_unlocked = models.BooleanField(
+        default=False,
+    )
+    release = models.ForeignKey(
+        Release,
+        on_delete=models.PROTECT,
+        null=True,
+        related_name='achievements',
+    )
+    zone = models.ForeignKey(
+        Zone,
+        on_delete=models.PROTECT,
+        null=True,
+        related_name='achievements',
+    )
+
+    def __str__(self):
+        return self.name
+
+
 class Collection(models.Model):
     name = models.CharField(
         max_length=255,

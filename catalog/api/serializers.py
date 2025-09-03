@@ -14,3 +14,9 @@ class ReleaseListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Release
         fields = ['name', 'slug', 'order', 'zones']
+
+
+class ZoneSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Zone
+        fields = ['name', 'slug']

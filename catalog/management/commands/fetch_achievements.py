@@ -16,6 +16,7 @@ class Command(BaseCommand):
             defaults = {
                 'name': data.get('name'),
                 'description': data.get('description'),
+                'requirement': data.get('requirement'),
             }
 
             achievement, _ = Achievement.objects.update_or_create(

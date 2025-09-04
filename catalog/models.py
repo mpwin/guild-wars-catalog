@@ -46,6 +46,7 @@ class Achievement(models.Model):
         max_length=255,
     )
     description = models.TextField()
+    requirement = models.TextField()
     is_unlocked = models.BooleanField(
         default=False,
     )

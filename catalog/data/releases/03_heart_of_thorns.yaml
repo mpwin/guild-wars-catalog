@@ -14,6 +14,43 @@ zones:
       - 2505 # "Lethal Vantage" Strongbox
       - 2552 # "Mellaggan's Valor" Strongbox
       - 2624 # "Thunderbreaker" Strongbox
+      - 2573 # Bronzer
+      - 2460 # Bugs in the Branches: Gold
+      - 2435 # Bugs in the Branches: Silver
+      - 2304 # Caught 'Em All
+      - 2429 # Diarmid Dropper
+      - 2343 # Dive Master: Verdant Brink
+      - 2599 # Egg Run
+      - 2246 # Equitable Elector
+      - 2510 # Excellent Judge of Character
+      - 2369 # Father of Wyverns
+      - 2540 # Flying Circus: Gold
+      - 2558 # Flying Circus: Silver
+      - 2333 # Froglicker
+      - 2636 # Grassy Troll
+      - 2281 # Ground Pounder
+      - 2203 # Honorary Jaka Itzel
+      - 2489 # Jungle Totem Hunter
+      - 2352 # Lord of the Jungle
+      - 2423 # Mother of Wyverns
+      - 2543 # Ongoing Defense
+      - 2431 # Ordnance Corps Auxiliary
+      - 2257 # Pact Camper
+      - 2307 # Pale Reaver Believer
+      - 2541 # Patron of the Nobility
+      - 2165 # Raised the Bar
+      - 2499 # Salvage Pit: Gold
+      - 2494 # Salvage Pit: Silver
+      - 2276 # Shooting Gallery: Gold
+      - 2350 # Shooting Gallery: Silver
+      - 2532 # Skritt Salvager
+      - 2566 # Sky Commander
+      - 2211 # Sky Stalker
+      - 2157 # Tendril Torchers: Gold
+      - 2424 # Tendril Torchers: Silver
+      - 2294 # Tetrad Trouncer
+      - 2570 # The Most Dangerous Game
+      - 2563 # Wartime Sommelier
 
   - name: Auric Basin
     slug: auric-basin

@@ -8,17 +8,45 @@ zones:
     slug: verdant-brink
     order: 1
 
+    achievement_ids:
+      - 2631 # "Faren's Flyer" Strongbox
+      - 2249 # "Glory of Tyria" Strongbox
+      - 2505 # "Lethal Vantage" Strongbox
+      - 2552 # "Mellaggan's Valor" Strongbox
+      - 2624 # "Thunderbreaker" Strongbox
+
   - name: Auric Basin
     slug: auric-basin
     order: 2
+
+    achievement_ids:
+      - 2565 # "Endurance" Strongbox
+      - 2512 # "Obsidian Triumph" Strongbox
+      - 2583 # "Slice of Sky" Strongbox
+      - 2617 # "Straight and Narrow" Strongbox
+      - 2240 # "Vengeance Rising" Strongbox
 
   - name: Tangled Depths
     slug: tangled-depths
     order: 3
 
+    achievement_ids:
+      - 2365 # "Cryptonym" Strongbox
+      - 2446 # "Plains of Golghein" Strongbox
+      - 2210 # "Shard of Brilliance" Strongbox
+      - 2326 # "Sword of Smodur" Strongbox
+      - 2437 # "Whitebear's Pride II" Strongbox
+
   - name: Dragon's Stand
     slug: dragons-stand
     order: 4
+
+    achievement_ids:
+      - 2538 # "Dragonrender" Strongbox
+      - 2515 # "Legacy of Owl" Strongbox
+      - 2214 # "Pride of Lion's Arch" Strongbox
+      - 2544 # "Scorchrazor II" Strongbox
+      - 2243 # "Unsolved Conundrum" Strongbox
 
 collections:
   - name: Auric

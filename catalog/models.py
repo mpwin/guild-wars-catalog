@@ -1,3 +1,5 @@
+from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.models import ContentType
 from django.db import models
 
 
@@ -38,6 +40,48 @@ class Zone(models.Model):
         return self.name
 
 
+class Collection(models.Model):
+    name = models.CharField(
+        max_length=80,
+    )
+    category = models.CharField(
+        max_length=40,
+    )
+    order = models.PositiveSmallIntegerField()
+    release = models.ForeignKey(
+        Release,
+        on_delete=models.PROTECT,
+        null=True,
+        related_name='collections',
+    )
+    zone = models.ForeignKey(
+        Zone,
+        on_delete=models.PROTECT,
+        null=True,
+        related_name='collections',
+    )
+
+
+class CollectionItem(models.Model):
+    collection = models.ForeignKey(
+        Collection,
+        on_delete=models.PROTECT,
+        related_name='items',
+    )
+    content_type = models.ForeignKey(
+        ContentType,
+        on_delete=models.PROTECT,
+    )
+    object_id = models.PositiveIntegerField()
+    content_object = GenericForeignKey('content_type', 'object_id')
+    order = models.PositiveSmallIntegerField()
+
+    class Meta:
+        indexes = [
+            models.Index(fields=['content_type', 'object_id'])
+        ]
+
+
 class Achievement(models.Model):
     api_id = models.PositiveIntegerField(
         primary_key=True,
@@ -49,45 +93,6 @@ class Achievement(models.Model):
     requirement = models.TextField()
     is_unlocked = models.BooleanField(
         default=False,
-    )
-    release = models.ForeignKey(
-        Release,
-        on_delete=models.PROTECT,
-        null=True,
-        related_name='achievements',
-    )
-    zone = models.ForeignKey(
-        Zone,
-        on_delete=models.PROTECT,
-        null=True,
-        related_name='achievements',
-    )
-
-    def __str__(self):
-        return self.name
-
-
-class Collection(models.Model):
-    name = models.CharField(
-        max_length=255,
-    )
-    category = models.CharField(
-        max_length=20,
-    )
-    note = models.CharField(
-        max_length=255,
-    )
-    release = models.ForeignKey(
-        Release,
-        on_delete=models.PROTECT,
-        null=True,
-        related_name='collections',
-    )
-    zone = models.ForeignKey(
-        Zone,
-        on_delete=models.PROTECT,
-        null=True,
-        related_name='collections',
     )
 
     def __str__(self):
@@ -109,12 +114,6 @@ class Skin(models.Model):
     )
     is_unlocked = models.BooleanField(
         default=False,
-    )
-    collection = models.ForeignKey(
-        Collection,
-        on_delete=models.PROTECT,
-        null=True,
-        related_name='skins',
     )
 
     def __str__(self):

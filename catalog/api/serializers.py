@@ -23,8 +23,9 @@ class AchievementSerializer(serializers.ModelSerializer):
 
 
 class ZoneSerializer(serializers.ModelSerializer):
-    achievements = AchievementSerializer(many=True)
+    # achievements = AchievementSerializer(many=True)
 
     class Meta:
         model = Zone
-        fields = ['name', 'slug', 'achievements']
+        # fields = ['name', 'slug', 'achievements']
+        fields = ['name', 'slug']

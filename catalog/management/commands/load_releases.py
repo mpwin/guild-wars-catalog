@@ -39,25 +39,25 @@ class Command(BaseCommand):
                 )
                 zones[zone.slug] = zone
                 self.stdout.write(f"Zone : {zone.name}")
-                self.load_achievements(zone, zone_data['achievement_ids'])
+                # self.load_achievements(zone, zone_data['achievement_ids'])
 
-            for collection_data in data['collections']:
-                collection, _ = Collection.objects.update_or_create(
-                    name=collection_data['name'],
-                    defaults={
-                      'category': collection_data['category'],
-                      'note': collection_data['note'],
-                      'release': release,
-                      'zone': zones.get(collection_data.get('zone')),
-                    },
-                )
-                self.stdout.write(f"Collection : {collection.name}")
+            # for collection_data in data['collections']:
+            #     collection, _ = Collection.objects.update_or_create(
+            #         name=collection_data['name'],
+            #         defaults={
+            #           'category': collection_data['category'],
+            #           'note': collection_data['note'],
+            #           'release': release,
+            #           'zone': zones.get(collection_data.get('zone')),
+            #         },
+            #     )
+            #     self.stdout.write(f"Collection : {collection.name}")
 
-                for skin_id in collection_data['skin_ids']:
-                    skin = Skin.objects.get(api_id=skin_id)
-                    if skin.collection_id != collection.id:
-                        skin.collection = collection
-                        skin.save(update_fields=['collection'])
+            #     for skin_id in collection_data['skin_ids']:
+            #         skin = Skin.objects.get(api_id=skin_id)
+            #         if skin.collection_id != collection.id:
+            #             skin.collection = collection
+            #             skin.save(update_fields=['collection'])
 
     def load_achievements(self, zone: Zone, ach_ids: list[int]) -> None:
         for ach_id in ach_ids:

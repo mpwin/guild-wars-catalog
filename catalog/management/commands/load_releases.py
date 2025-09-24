@@ -49,24 +49,8 @@ class Command(BaseCommand):
                 self.stdout.write(f"Zone : {zone.name}")
 
                 self.load_achs(zone, zone_data['achievement_collections'])
-
-            # for collection_data in data['collections']:
-            #     collection, _ = Collection.objects.update_or_create(
-            #         name=collection_data['name'],
-            #         defaults={
-            #           'category': collection_data['category'],
-            #           'note': collection_data['note'],
-            #           'release': release,
-            #           'zone': zones.get(collection_data.get('zone')),
-            #         },
-            #     )
-            #     self.stdout.write(f"Collection : {collection.name}")
-
-            #     for skin_id in collection_data['skin_ids']:
-            #         skin = Skin.objects.get(api_id=skin_id)
-            #         if skin.collection_id != collection.id:
-            #             skin.collection = collection
-            #             skin.save(update_fields=['collection'])
+                if 'skin_collections' in zone_data:
+                    self.load_skins(zone, zone_data['skin_collections'])
 
     def load_achs(self, obj: Release | Zone, colls: list) -> None:
         if isinstance(obj, Release):
@@ -95,5 +79,35 @@ class Command(BaseCommand):
                     object_id=ach_id,
                     defaults={
                         'order': ach_order,
+                    }
+                )
+
+    def load_skins(self, obj: Release | Zone, colls: list) -> None:
+        if isinstance(obj, Release):
+            release = obj
+            zone = None
+        if isinstance(obj, Zone):
+            release = obj.release
+            zone = obj
+
+        for coll_order, coll_data in enumerate(colls, 1):
+            collection, _ = Collection.objects.get_or_create(
+                name=coll_data['name'],
+                category='skin',
+                release=release,
+                zone=zone,
+                defaults={
+                    'order': coll_order,
+                }
+            )
+
+            content_type = ContentType.objects.get_for_model(Skin)
+            for skin_order, skin_id in enumerate(coll_data['skin_ids'], 1):
+                CollectionItem.objects.get_or_create(
+                    collection=collection,
+                    content_type=content_type,
+                    object_id=skin_id,
+                    defaults={
+                        'order': skin_order,
                     }
                 )

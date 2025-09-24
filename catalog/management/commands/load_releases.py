@@ -37,6 +37,11 @@ class Command(BaseCommand):
             )
             self.stdout.write(f"Release : {release.name}")
 
+            if 'achievement_collections' in data['release']:
+                self.load_skins(release, data['release']['achievement_collections'])
+            if 'skin_collections' in data['release']:
+                self.load_skins(release, data['release']['skin_collections'])
+
             for zone_data in data['zones']:
                 zone, _ = Zone.objects.get_or_create(
                     slug=zone_data['slug'],

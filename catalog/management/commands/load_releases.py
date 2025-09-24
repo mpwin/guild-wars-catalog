@@ -1,8 +1,18 @@
 import os
 import yaml
-from catalog.models import Achievement, Collection, Release, Skin, Zone
+
 from django.conf import settings
+from django.contrib.contenttypes.models import ContentType
 from django.core.management.base import BaseCommand
+
+from catalog.models import (
+    Achievement,
+    Collection,
+    CollectionItem,
+    Release,
+    Skin,
+    Zone
+)
 
 
 RELEASES_DIR = os.path.join(settings.BASE_DIR, 'catalog', 'data', 'releases')
@@ -27,7 +37,6 @@ class Command(BaseCommand):
             )
             self.stdout.write(f"Release : {release.name}")
 
-            zones: dict = {}
             for zone_data in data['zones']:
                 zone, _ = Zone.objects.get_or_create(
                     slug=zone_data['slug'],
@@ -37,9 +46,9 @@ class Command(BaseCommand):
                         'order': zone_data['order'],
                     }
                 )
-                zones[zone.slug] = zone
                 self.stdout.write(f"Zone : {zone.name}")
-                # self.load_achievements(zone, zone_data['achievement_ids'])
+
+                self.load_achs(zone, zone_data['achievement_collections'])
 
             # for collection_data in data['collections']:
             #     collection, _ = Collection.objects.update_or_create(
@@ -59,10 +68,32 @@ class Command(BaseCommand):
             #             skin.collection = collection
             #             skin.save(update_fields=['collection'])
 
-    def load_achievements(self, zone: Zone, ach_ids: list[int]) -> None:
-        for ach_id in ach_ids:
-            ach = Achievement.objects.get(api_id=ach_id)
-            ach.release = zone.release
-            ach.zone = zone
-            ach.save()
-            print(f"Achievement : {zone} ~ {ach.name}")
+    def load_achs(self, obj: Release | Zone, colls: list) -> None:
+        if isinstance(obj, Release):
+            release = obj
+            zone = None
+        if isinstance(obj, Zone):
+            release = obj.release
+            zone = obj
+
+        for coll_order, coll_data in enumerate(colls, 1):
+            collection, _ = Collection.objects.get_or_create(
+                name=coll_data['name'],
+                category='achievement',
+                release=release,
+                zone=zone,
+                defaults={
+                    'order': coll_order,
+                }
+            )
+
+            content_type = ContentType.objects.get_for_model(Achievement)
+            for ach_order, ach_id in enumerate(coll_data['achievement_ids'], 1):
+                CollectionItem.objects.get_or_create(
+                    collection=collection,
+                    content_type=content_type,
+                    object_id=ach_id,
+                    defaults={
+                        'order': ach_order,
+                    }
+                )

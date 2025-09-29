@@ -1,4 +1,4 @@
-from catalog.models import Achievement, Collection, Release, Zone
+from catalog.models import Achievement, Collection, Release, Skin, Zone
 from rest_framework import serializers
 
 
@@ -36,8 +36,29 @@ class AchievementCollectionSerializer(serializers.ModelSerializer):
         return result
 
 
+class SkinSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Skin
+        fields = ['name']
+
+
+class SkinCollectionSerializer(serializers.ModelSerializer):
+    skins = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Collection
+        fields = ['name', 'skins']
+
+    def get_skins(self, obj):
+        result = []
+        for item in obj.items.all():
+            result.append(SkinSerializer(item.content_object).data)
+        return result
+
+
 class ZoneSerializer(serializers.ModelSerializer):
     achievement_collections = serializers.SerializerMethodField()
+    skin_collections = serializers.SerializerMethodField()
 
     class Meta:
         model = Zone
@@ -45,6 +66,7 @@ class ZoneSerializer(serializers.ModelSerializer):
             'name',
             'slug',
             'achievement_collections',
+            'skin_collections',
         ]
 
     def get_achievement_collections(self, obj):
@@ -54,4 +76,13 @@ class ZoneSerializer(serializers.ModelSerializer):
         result = []
         for collection in collections:
             result.append(AchievementCollectionSerializer(collection).data)
+        return result
+
+    def get_skin_collections(self, obj):
+        collections = obj.collections.filter(
+            category='skin',
+        ).order_by('order')
+        result = []
+        for collection in collections:
+            result.append(SkinCollectionSerializer(collection).data)
         return result

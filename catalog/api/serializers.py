@@ -1,4 +1,4 @@
-from catalog.models import Achievement, Release, Zone
+from catalog.models import Achievement, Collection, Release, Zone
 from rest_framework import serializers
 
 
@@ -22,10 +22,36 @@ class AchievementSerializer(serializers.ModelSerializer):
         fields = ['name', 'requirement', 'description']
 
 
+class AchievementCollectionSerializer(serializers.ModelSerializer):
+    achievements = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Collection
+        fields = ['name', 'achievements']
+
+    def get_achievements(self, obj):
+        result = []
+        for item in obj.items.all():
+            result.append(AchievementSerializer(item.content_object).data)
+        return result
+
+
 class ZoneSerializer(serializers.ModelSerializer):
-    # achievements = AchievementSerializer(many=True)
+    achievement_collections = serializers.SerializerMethodField()
 
     class Meta:
         model = Zone
-        # fields = ['name', 'slug', 'achievements']
-        fields = ['name', 'slug']
+        fields = [
+            'name',
+            'slug',
+            'achievement_collections',
+        ]
+
+    def get_achievement_collections(self, obj):
+        collections = obj.collections.filter(
+            category='achievement',
+        ).order_by('order')
+        result = []
+        for collection in collections:
+            result.append(AchievementCollectionSerializer(collection).data)
+        return result

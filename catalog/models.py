@@ -99,6 +99,18 @@ class Achievement(models.Model):
         return self.name
 
 
+class Mini(models.Model):
+    api_id = models.PositiveIntegerField(
+        primary_key=True,
+    )
+    name = models.CharField(
+        max_length=255,
+    )
+
+    def __str__(self):
+        return self.name
+
+
 class Skin(models.Model):
     api_id = models.PositiveIntegerField(
         primary_key=True,

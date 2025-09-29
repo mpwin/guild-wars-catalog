@@ -30,6 +30,25 @@ class GW2APIClient:
 
             time.sleep(2)
 
+    def iter_minis(self) -> Iterator[dict]:
+        response = self.session.get(
+            self.base_url + "minis",
+            params={'page': 0, 'page_size': 200},
+        )
+        page_total = int(response.headers.get('X-Page-Total', 1))
+
+        for page in range(page_total):
+            response = self.session.get(
+                self.base_url + "minis",
+                params={'page': page, 'page_size': 200},
+            )
+            minis = response.json()
+
+            for mini in minis:
+                yield mini
+
+            time.sleep(2)
+
     def iter_skins(self) -> Iterator[dict]:
         response = self.session.get(
             self.base_url + "skins",

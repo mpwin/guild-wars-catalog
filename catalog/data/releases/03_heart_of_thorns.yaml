@@ -108,6 +108,36 @@ zones:
           - 2583 # "Slice of Sky" Strongbox
           - 2617 # "Straight and Narrow" Strongbox
           - 2240 # "Vengeance Rising" Strongbox
+          - 2607 # A Fungus Among Us: Gold
+          - 2188 # A Fungus Among Us: Silver
+          - 2373 # A Study in Gold
+          - 2618 # Ba-Boom
+          - 2417 # Droppin' Bombs
+          - 2263 # Egg Bearer
+          - 2406 # Fallen Masks: Gold
+          - 2200 # Fallen Masks: Silver
+          - 2568 # Forgotten City Arches
+          - 2216 # Hidden Amphibian
+          - 2292 # Highest Gear
+          - 2614 # Invisible King
+          - 2594 # Mordrem Begone
+          - 2342 # Mushroom Power
+          - 2602 # No Mask Left Behind
+          - 2445 # On Wings of Gold: Gold
+          - 2252 # On Wings of Gold: Silver
+          - 2427 # Powered Up
+          - 2382 # Sanctum Scramble: Gold
+          - 2633 # Sanctum Scramble: Silver
+          - 2622 # Saving the City of Gold
+          - 2634 # Tarir Challenge Winner
+          - 2549 # Tarnished Traitor
+          - 2331 # The Floor Is Lava?: Gold
+          - 2484 # The Floor Is Lava?: Silver
+          - 2283 # The Golden Chicken
+          - 2574 # Treetop Retriever
+          - 2555 # Ultimate Challenge Winner
+          - 2194 # Vinetooth Hunter
+          - 2516 # Where Exalted Dare
 
     skin_collections:
       - name: Auric Weapons

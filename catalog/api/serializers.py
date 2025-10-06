@@ -17,43 +17,55 @@ class ReleaseListSerializer(serializers.ModelSerializer):
 
 
 class AchievementSerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField(source='api_id')
+
     class Meta:
         model = Achievement
-        fields = ['name', 'requirement', 'description']
+        fields = ['id', 'name', 'requirement', 'description']
 
 
 class AchievementCollectionSerializer(serializers.ModelSerializer):
-    achievements = serializers.SerializerMethodField()
+    type = serializers.SerializerMethodField()
+    items = serializers.SerializerMethodField()
 
     class Meta:
         model = Collection
-        fields = ['name', 'achievements']
+        fields = ['name', 'type', 'items']
 
-    def get_achievements(self, obj):
-        result = []
+    def get_type(self, obj):
+        return 'achievement'
+
+    def get_items(self, obj):
+        items = []
         for item in obj.items.all():
-            result.append(AchievementSerializer(item.content_object).data)
-        return result
+            items.append(AchievementSerializer(item.content_object).data)
+        return items
 
 
 class SkinSerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField(source='api_id')
+
     class Meta:
         model = Skin
-        fields = ['name']
+        fields = ['id', 'name']
 
 
 class SkinCollectionSerializer(serializers.ModelSerializer):
-    skins = serializers.SerializerMethodField()
+    type = serializers.SerializerMethodField()
+    items = serializers.SerializerMethodField()
 
     class Meta:
         model = Collection
-        fields = ['name', 'skins']
+        fields = ['name', 'type', 'items']
 
-    def get_skins(self, obj):
-        result = []
+    def get_type(self, obj):
+        return 'skin'
+
+    def get_items(self, obj):
+        items = []
         for item in obj.items.all():
-            result.append(SkinSerializer(item.content_object).data)
-        return result
+            items.append(SkinSerializer(item.content_object).data)
+        return items
 
 
 class ZoneSerializer(serializers.ModelSerializer):

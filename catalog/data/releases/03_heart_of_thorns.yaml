@@ -171,6 +171,45 @@ zones:
           - 2210 # "Shard of Brilliance" Strongbox
           - 2326 # "Sword of Smodur" Strongbox
           - 2437 # "Whitebear's Pride II" Strongbox
+          - 2453 # Archeotech Adept
+          - 2546 # Beetle Feast: Gold
+          - 2526 # Beetle Feast: Silver
+          - 2576 # Chak Bait
+          - 2371 # Chak Crusher
+          - 2233 # Chak Egg Scrambler
+          - 2554 # Champion Chak Hunter
+          - 2172 # Cloak and Snagger
+          - 2386 # Crystallized Cache Seeker
+          - 2207 # Disco Dancing Delver
+          - 2436 # Dive Master: Chak Hive
+          - 2334 # Drone Race: Gold
+          - 2215 # Drone Race: Silver
+          - 2459 # Elusive Elemental Eliminator
+          - 2625 # Friend of the Frogs
+          - 2151 # Gerent Slayer
+          - 2465 # Haywire Punch-o-Matic Battle: Gold
+          - 2430 # Haywire Punch-o-Matic Battle: Silver
+          - 2613 # Honorary Ogre
+          - 2155 # Honorary Rata Novan
+          - 2579 # Lore Untangler
+          - 2603 # Lost Lab Locator
+          - 2286 # Master Mushroom Spelunker
+          - 2293 # Nuhoch Lane Defender
+          - 2323 # Ogre Airship Climber
+          - 2261 # Ogre Lane Defender
+          - 2615 # Potoni Masher
+          - 2321 # Pulse Room Glider
+          - 2310 # Rata Novus Lane Defender
+          - 2237 # Regurgicidal
+          - 2251 # Roost Rouster
+          - 2523 # SCAR Lane Defender
+          - 2299 # SCAR Supporter
+          - 2335 # Scrap Rifle Field Test: Gold
+          - 2230 # Scrap Rifle Field Test: Silver
+          - 2173 # The Ley-Line Run: Gold
+          - 2298 # The Ley-Line Run: Silver
+          - 2462 # The Longest Glide
+          - 2186 # Triple Mordrem Takedown
 
     skin_collections:
       - name: Chak Weapons

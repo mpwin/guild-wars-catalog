@@ -68,6 +68,42 @@ class SkinCollectionSerializer(serializers.ModelSerializer):
         return items
 
 
+class ReleaseSerializer(serializers.ModelSerializer):
+    zones = ZoneListItemSerializer(many=True)
+    achievement_collections = serializers.SerializerMethodField()
+    skin_collections = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Release
+        fields = [
+            'name',
+            'slug',
+            'zones',
+            'achievement_collections',
+            'skin_collections',
+        ]
+
+    def get_achievement_collections(self, obj):
+        collections = obj.collections.filter(
+            category='achievement',
+            zone=None,
+        ).order_by('order')
+        result = []
+        for collection in collections:
+            result.append(AchievementCollectionSerializer(collection).data)
+        return result
+
+    def get_skin_collections(self, obj):
+        collections = obj.collections.filter(
+            category='skin',
+            zone=None,
+        ).order_by('order')
+        result = []
+        for collection in collections:
+            result.append(SkinCollectionSerializer(collection).data)
+        return result
+
+
 class ZoneSerializer(serializers.ModelSerializer):
     achievement_collections = serializers.SerializerMethodField()
     skin_collections = serializers.SerializerMethodField()

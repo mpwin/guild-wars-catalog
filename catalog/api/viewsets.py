@@ -7,7 +7,12 @@ from . import serializers
 
 class ReleaseViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Release.objects.prefetch_related('zones')
-    serializer_class = serializers.ReleaseListSerializer
+    lookup_field = 'slug'
+
+    def get_serializer_class(self):
+        if self.action == 'list':
+            return serializers.ReleaseListSerializer
+        return serializers.ReleaseSerializer
 
 
 class ZoneViewSet(viewsets.ViewSet):

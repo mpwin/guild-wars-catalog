@@ -1,0 +1,39 @@
+name: gwc-backend
+
+services:
+  db:
+    image: postgres:17
+    container_name: gwc-backend-db
+    env_file: .env.prod
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: "pg_isready -d ${POSTGRES_DB}"
+      interval: 5s
+      timeout: 5s
+    restart: unless-stopped
+    networks:
+      - gwc-network
+
+  web:
+    image: gwc-backend:prod
+    container_name: gwc-backend-web
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    env_file: .env.prod
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - '8000:8000'
+    restart: unless-stopped
+    networks:
+      - gwc-network
+
+volumes:
+  postgres_data:
+
+networks:
+  gwc-network:
+    external: true

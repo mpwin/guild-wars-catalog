@@ -138,14 +138,15 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-if DEBUG:
-    CORS_ALLOW_ALL_ORIGINS = True
-else:
+# Production configuration
+if not DEBUG:
     CORS_ALLOWED_ORIGINS = os.getenv('CORS_ALLOWED_ORIGINS', '').split(',')
 
-if not DEBUG:
-    SECURE_SSL_REDIRECT = True
-    SESSION_COOKIE_SECURE = True
-    CSRF_COOKIE_SECURE = True
-    SECURE_BROWSER_XSS_FILTER = True
-    SECURE_CONTENT_TYPE_NOSNIFF = True
+    ssl_enabled = os.getenv('ENABLE_SSL', 'False') == 'True'
+    CSRF_COOKIE_SECURE = ssl_enabled
+    SECURE_SSL_REDIRECT = ssl_enabled
+    SESSION_COOKIE_SECURE = ssl_enabled
+
+# Development configuration
+else:
+    CORS_ALLOW_ALL_ORIGINS = True

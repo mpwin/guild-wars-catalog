@@ -15,11 +15,7 @@ class ReleaseViewSet(viewsets.ReadOnlyModelViewSet):
         return serializers.ReleaseSerializer
 
 
-class ZoneViewSet(viewsets.ViewSet):
+class ZoneViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = Zone.objects.all()
     lookup_field = 'slug'
-
-    def retrieve(self, request, slug=None):
-        queryset = Zone.objects.all()
-        zone = get_object_or_404(queryset, slug=slug)
-        serializer = serializers.ZoneSerializer(zone)
-        return Response(serializer.data)
+    serializer_class = serializers.ZoneSerializer
